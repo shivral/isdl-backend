@@ -12,7 +12,7 @@ def createBooking(request):
     print(user)
     if user:
         hallid = request.query_params.get('hall_id',None)
-        hall = LectureHall.objects.get(id=hallid)
+        hall = LectureHall.objects.all().first()
         Booking.objects.create(actor=user,hall=hall,booked=False,pending=True,slotStart=str(datetime.datetime.now()),slotEnd=str(datetime.datetime.now()))                    
         print(Booking.objects.all())
         return Response({'Data':'Success'})
