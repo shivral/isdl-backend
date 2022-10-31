@@ -11,7 +11,7 @@ def createBooking(request):
     user=authuser(request)
     if user:
         hallid = request.query_params.get('id',None)
-        # print("hall id is ",hallid)       
+        # print("hall id is ",hallid)   s    
         hall = LectureHall.objects.get(id=hallid)
         Booking.objects.create(user=user,hall=hall,booked=False,pending=True,slotStart=str(datetime.datetime.now()),slotEnd=str(datetime.datetime.now()))                    
         print(Booking.objects.all())
