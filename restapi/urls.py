@@ -1,5 +1,5 @@
 from django.urls import path,re_path
-from .views import api_home, logout,register,login, userView
+from .views import api_home, logout,register,login, userView,getAllHalls
 from .user_views import createBooking
 from .hall_views import createHall
 urlpatterns = [
@@ -9,5 +9,6 @@ urlpatterns = [
     path('user',userView),
     path('logout',logout),
     path('createBooking',createBooking),
-    path('createHall',createHall)
+    path('createHall',createHall),
+    path('allHalls',getAllHalls)
 ]
