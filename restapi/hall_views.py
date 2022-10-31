@@ -9,4 +9,4 @@ def createHall(request):
         hs.save()
     qs=Hall.objects.all()
     hsall=HallSerializer(data=qs,many=True)
-    return Response(hs.data)
+    return Response(hsall.data)
