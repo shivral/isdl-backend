@@ -98,5 +98,5 @@ def logout(request):
 def getAllHalls(request):
     qs=list(LectureHall.objects.all())
     ser=HallSerializer(qs,many=True)
-    return Response(ser)
+    return Response(ser.data)
 
