@@ -14,7 +14,7 @@ def createBooking(request):
         hall = LectureHall.objects.all().first()
         Booking.objects.create(actor=user,hall=hall,booked=False,pending=True,slotStart=str(datetime.datetime.now()),slotEnd=str(datetime.datetime.now()))                    
         print(Booking.objects.all())
-        hs=HallSerializer(hall)
+        hs=HallSerializer(data=hall)
         if hs.is_valid():
             return Response(hs.data)
     else:
