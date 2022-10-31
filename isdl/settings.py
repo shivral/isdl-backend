@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'isdl.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'isdlDB',
+        'NAME': 'isdlDB2',
         'USER':'postgres',
         'PASSWORD':'Shivral31',
         'HOST':'127.0.0.1',
