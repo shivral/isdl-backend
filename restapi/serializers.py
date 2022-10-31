@@ -6,7 +6,7 @@ from restapi.models import User,LectureHall,Booking
 class HallSerializer(serializers.ModelSerializer):
     class Meta:
         model=LectureHall
-        fields=['hall_name','hall_location','hall_capacity','hall_rating','hall_image']
+        fields=['hall_name','hall_location','hall_capacity','hall_rating','hall_image','id']
 
 
 class UserSerializer(serializers.ModelSerializer):
