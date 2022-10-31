@@ -9,4 +9,7 @@ def createHall(request):
         hs.save()
     qs=Hall.objects.all()
     hsall=HallSerializer(data=qs,many=True)
-    return Response(hsall.data)
+    if hsall.is_valid():
+        return Response(hsall.data)
+    else:
+        return Response({"l":"l"})
