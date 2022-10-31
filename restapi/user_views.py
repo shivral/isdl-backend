@@ -20,3 +20,14 @@ def createBooking(request):
     else:
         return Response({'Data':'Failed'})
 
+@api_view(['GET'])
+def getUserBooking(request):
+    user=authuser(request)
+    if user:
+        qs=[]
+        for hall in user.bookings.all():
+            allBookingsqs=list(Booking.objects.filter(actor=user,hall=hall))
+            qs+=allBookingsqs
+        return Response(BookingSerializer(qs,many=True).data)
+    else:
+        return Response({"bad":"no auth"})
