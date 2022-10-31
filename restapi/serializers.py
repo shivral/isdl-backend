@@ -1,12 +1,12 @@
 from asyncore import write
 from rest_framework import serializers
 
-from restapi.models import User,Hall,Booking
+from restapi.models import User,LectureHall,Booking
 
 class HallSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Hall
-        fields='__all__'
+        model=LectureHall
+        fields=['hall_name','hall_location','hall_capacity','hall_rating','hall_image']
 
 
 class UserSerializer(serializers.ModelSerializer):

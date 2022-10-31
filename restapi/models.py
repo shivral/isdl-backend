@@ -24,6 +24,19 @@ class Hall(models.Model):
 
     hall_selectedslots = ArrayField(ArrayField(models.IntegerField())) # [date int, time slot int] #no need we cann acess
 
+class LectureHall(models.Model):
+    
+    #hall_isreq how to check in time slot?
+    #hall_isbooked how to check in time slot?
+    
+    hall_name = models.CharField(max_length=40)
+    id = models.AutoField(primary_key=True)
+    hall_location = models.CharField(max_length=40)
+    hall_capacity = models.IntegerField()
+    hall_rating = models.IntegerField()
+    hall_image = models.URLField( max_length=200)
+
+
 
 class User(AbstractUser):
     
