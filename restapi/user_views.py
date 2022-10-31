@@ -10,8 +10,8 @@ import datetime
 def createBooking(request):
     user=authuser(request)
     if user:
-        hallid = request.query_params.get('hall_id',None)
-        hall = LectureHall.objects.all().first()
+        hallid = int(request.query_params.get('hall_id',None))
+        hall = LectureHall.objects.get(id=hallid)
         Booking.objects.create(actor=user,hall=hall,booked=False,pending=True,slotStart=str(datetime.datetime.now()),slotEnd=str(datetime.datetime.now()))                    
         print(Booking.objects.all())
         hs=HallSerializer(hall)
