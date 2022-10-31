@@ -75,7 +75,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'isdl.wsgi.application'
 
 
-# Database
+# Databases
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
