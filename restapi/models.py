@@ -43,7 +43,7 @@ class User(AbstractUser):
     name = models.CharField(max_length=40)
     # id = models.AutoField(primary_key=True)
     email=models.EmailField(max_length=40,unique=True)
-    bookings = models.ManyToManyField(Hall,through='Booking')
+    bookings = models.ManyToManyField(LectureHall,through='Booking')
     isAdmin=models.BooleanField(default=False)
     username=None
     password=models.CharField(max_length=256)
@@ -53,7 +53,7 @@ class User(AbstractUser):
 class Booking(models.Model):
     
     actor = models.ForeignKey(User, on_delete=models.CASCADE)
-    hall = models.ForeignKey(Hall, on_delete=models.CASCADE)
+    hall = models.ForeignKey(LectureHall, on_delete=models.CASCADE)
     booked = models.BooleanField()
     pending=models.BooleanField()
     slotStart=models.DateTimeField(null=True,blank=True)
