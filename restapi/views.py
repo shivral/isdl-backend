@@ -9,8 +9,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.exceptions import AuthenticationFailed
 
-from restapi.models import User
-from .serializers import USerLoginSerializer, UserSerializer
+from restapi.models import LectureHall, User
+from .serializers import HallSerializer, USerLoginSerializer, UserSerializer
 
 def api_home(request ,*args, **kwargs):
     return JsonResponse({"Message" :"this is inside"})
@@ -94,5 +94,9 @@ def logout(request):
     response.data={"message":"success"}
     return response
 
-
+@api_view(['GET'])
+def getAllHalls(request):
+    qs=list(LectureHall.objects.all())
+    ser=HallSerializer(qs,many=True)
+    return Response(ser)
 
