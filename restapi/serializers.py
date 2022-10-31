@@ -2,7 +2,7 @@ from asyncore import write
 from rest_framework import serializers
 
 from restapi.models import User,LectureHall,Booking
-
+#k
 class HallSerializer(serializers.ModelSerializer):
     class Meta:
         model=LectureHall
