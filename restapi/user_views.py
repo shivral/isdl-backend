@@ -9,6 +9,7 @@ import datetime
 @api_view(['POST','GET'])
 def createBooking(request):
     user=authuser(request)
+    print(user)
     if user:
         hallid = request.query_params.get('hall_id',None)
         hall = LectureHall.objects.get(pk=hallid)
