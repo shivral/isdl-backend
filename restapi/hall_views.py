@@ -7,6 +7,8 @@ def createHall(request):
     hs=HallSerializer(data=request.data)
     if hs.is_valid():
         hs.save()
+    else:
+        print("lol")
     qs=LectureHall.objects.all()
     hsall=HallSerializer(data=qs,many=True)
     if hsall.is_valid():
