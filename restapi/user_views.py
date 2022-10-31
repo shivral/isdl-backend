@@ -13,7 +13,7 @@ def createBooking(request):
         hallid = request.query_params.get('id',None)
         # print("hall id is ",hallid)       
         hall = LectureHall.objects.get(id=hallid)
-        Booking.objects.create(actor=user,hall=hall,booked=False,pending=True,slotStart=str(datetime.datetime.now()),slotEnd=str(datetime.datetime.now()))                    
+        Booking.objects.create(user=user,hall=hall,booked=False,pending=True,slotStart=str(datetime.datetime.now()),slotEnd=str(datetime.datetime.now()))                    
         print(Booking.objects.all())
         hs=HallSerializer(hall)
         return Response(hs.data)
@@ -26,7 +26,7 @@ def getUserBooking(request):
     if user:
         qs=[]
         for hall in user.bookings.all():
-            allBookingsqs=list(Booking.objects.filter(actor=user,hall=hall))
+            allBookingsqs=list(Booking.objects.filter(user=user,hall=hall))
             qs+=allBookingsqs
         return Response(BookingSerializer(qs,many=True).data)
     else:

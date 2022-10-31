@@ -52,7 +52,7 @@ class User(AbstractUser):
 
 class Booking(models.Model):
     
-    actor = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     hall = models.ForeignKey(LectureHall, on_delete=models.CASCADE)
     booked = models.BooleanField()
     pending=models.BooleanField()
