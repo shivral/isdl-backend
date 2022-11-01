@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
 from datetime import timedelta,datetime
 import jwt
+'''admin views '''
 
 @api_view(['POST'])
 def registerAdmin(request):
