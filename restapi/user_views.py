@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from .models import Hall, LectureHall
 from .models import Booking
 from .serializers import BookingSerializer,HallSerializer
-import datetime
+from datetime import datetime
 
 @api_view(['POST','GET'])
 def createBooking(request):
@@ -16,7 +16,7 @@ def createBooking(request):
         # nw=datetime.datetime.now()
         # strin=f'{nw.hour}:{nw.minute}:{}'
         ss="2022-11-01T11:01"
-        Booking.objects.create(user=user,hall=hall,booked=False,pending=True,slotStart=ss,slotEnd=ss)                      # type: ignore
+        Booking.objects.create(user=user,hall=hall,booked=False,pending=True,slotStart=str(datetime.now()),slotEnd=str(datetime.now()))                      # type: ignore
         print(Booking.objects.all())
         hs=HallSerializer(hall)
         return Response(hs.data)
