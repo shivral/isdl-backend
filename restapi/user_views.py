@@ -5,7 +5,7 @@ from .models import Hall, LectureHall
 from .models import Booking
 from .serializers import BookingSerializer,HallSerializer
 from datetime import datetime
-
+#commit
 @api_view(['POST','GET'])
 def createBooking(request):
     user=authuser(request)
