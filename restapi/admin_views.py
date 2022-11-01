@@ -1,7 +1,9 @@
+from multiprocessing import AuthenticationError
 from .models import Booking, User
 from rest_framework.decorators import api_view
 from .serializers import AdminLoginSerializer, BookingSerializer
 from rest_framework.response import Response
+from rest_framework.request import Request
 from rest_framework.exceptions import AuthenticationFailed
 from datetime import timedelta,datetime
 import jwt
@@ -47,6 +49,18 @@ def getAllPending(request):
         ser=BookingSerializer(list(qs),many=True)
         return Response(ser.data)
     else:
-        return AuthenticationFailed("unauthenticated")
+        raise AuthenticationFailed("unauthenticated")
 
+
+@api_view(['POST'])
+def acceptRequest(request:Request):
+    admin=authadmin(request)
+    if admin:
+        bkid=request.query_params.get('id',None)
+        bk=Booking.objects.get(id=bkid)
+        bk.pending=False
+        bk.booked=True
+        return Response(BookingSerializer(bk).data)
+    else:
+        raise AuthenticationFailed('unauthenticated')
     
