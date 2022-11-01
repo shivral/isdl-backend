@@ -32,6 +32,6 @@ def getUserBooking(request):
         # for hall in user.bookings.all():
             # allBookingsqs=list(Booking.objects.filter(user=user,hall=hall))
             # qs+=allBookingsqs
-        return Response(BookingSerializer(qs,many=True).data)
+        return Response(BookingSerializer(qq,many=True).data)
     else:
         return Response({"bad":"no auth"})
