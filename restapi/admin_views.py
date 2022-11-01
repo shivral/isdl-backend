@@ -1,10 +1,11 @@
-from .models import User
+from .models import Booking, User
 from rest_framework.decorators import api_view
-from .serializers import AdminLoginSerializer
+from .serializers import AdminLoginSerializer, BookingSerializer
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
 from datetime import timedelta,datetime
 import jwt
+from .views import authadmin,Decode
 '''admin views '''
 
 @api_view(['POST'])
@@ -38,5 +39,14 @@ def loginAdmin(request):
     response.data={'jwt':token}
     return response
 
+@api_view(['GET'])
+def getAllPending(request):
+    admin=authadmin(request)
+    if admin:
+        qs=Booking.objects.filter(pending=True)
+        ser=BookingSerializer(list(qs),many=True)
+        return Response(ser.data)
+    else:
+        return AuthenticationFailed("unauthenticated")
 
     
