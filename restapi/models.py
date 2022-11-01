@@ -51,7 +51,7 @@ class User(AbstractUser):
     REQUIRED_FIELDS=[]
 
 class Booking(models.Model):
-    
+    id=models.AutoField(primary_key=True,unique=True) 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     hall = models.ForeignKey(LectureHall, on_delete=models.CASCADE)
     booked = models.BooleanField()
