@@ -16,6 +16,7 @@ def api_home(request ,*args, **kwargs):
     return JsonResponse({"Message" :"this is inside"})
 
 # Create your views here.
+
 @api_view(['POST'])
 def register(request):
     serializer=USerLoginSerializer(data=request.data)
