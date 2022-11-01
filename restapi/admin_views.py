@@ -60,6 +60,7 @@ def acceptRequest(request:Request):
         bk=Booking.objects.get(id=bkid)
         bk.pending=False
         bk.booked=True
+        bk.save()
         return Response(BookingSerializer(bk).data)
     else:
         raise AuthenticationFailed('unauthenticated')
