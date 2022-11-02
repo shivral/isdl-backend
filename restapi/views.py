@@ -37,6 +37,7 @@ def login(request):
         'id':user.id,  # type: ignore
         'name':user.name,
         'email':user.email,
+        'isAdmin':user.isAdmin,
         'exp':datetime.utcnow()+timedelta(minutes=30),
         'iat':datetime.utcnow()       
     }
