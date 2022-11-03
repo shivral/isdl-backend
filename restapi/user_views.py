@@ -15,7 +15,7 @@ def createBooking(request):
         hall = LectureHall.objects.get(id=hallid)
         start=request.query_params.get('start',None)
         end=request.query_params.get('end',None)
-        date=request.quer_params.get('date',None)
+        date=request.query_params.get('date',None)
         # nw=datetime.datetime.now()
         # strin=f'{nw.hour}:{nw.minute}:{}'
         ss="2022-11-01T11:01"
