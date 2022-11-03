@@ -15,11 +15,13 @@ def createBooking(request):
         hall = LectureHall.objects.get(id=hallid)
         start=request.query_params.get('start',None)
         end=request.query_params.get('end',None)
+        date=request.quer_params.get('date',None)
         # nw=datetime.datetime.now()
         # strin=f'{nw.hour}:{nw.minute}:{}'
         ss="2022-11-01T11:01"
         print(start,end)
-        Booking.objects.create(user=user,hall=hall,booked=False,pending=True,slotStart=start,slotEnd=end)                      # type: ignore
+
+        Booking.objects.create(user=user,hall=hall,booked=False,pending=True,slotStart=date+" "+start,slotEnd=date+" "+end)                      # type: ignore
         print(Booking.objects.all())
         hs=HallSerializer(hall)
         return Response(hs.data)
