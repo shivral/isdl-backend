@@ -57,11 +57,18 @@ def acceptRequest(request:Request):
     admin=authadmin(request)
     if admin:
         bkid=request.query_params.get('id',None)
+        bl=request.query_params.get('ac',None)
+        
         bk=Booking.objects.get(id=bkid)
-        bk.pending=False
-        bk.booked=True
-        bk.save()
-        return Response(BookingSerializer(bk).data)
+        if bl:
+            bk.pending=False
+            bk.booked=True
+            bk.save()
+            return Response(BookingSerializer(bk).data)
+        else:
+            bk.delete()
+            return Response({"Deleted":"scessfully"})
+
     else:
         raise AuthenticationFailed('unauthenticated')
     
