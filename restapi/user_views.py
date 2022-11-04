@@ -2,8 +2,8 @@ from .views import authuser,Decode
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Hall, LectureHall
-from .models import Booking
-from .serializers import BookingSerializer,HallSerializer
+from .models import Booking,User
+from .serializers import BookingSerializer,HallSerializer,UserSerializer
 from datetime import datetime
 #commit
 @api_view(['POST','GET'])
@@ -32,6 +32,12 @@ def createBooking(request):
         return Response(hs.data)
     else:
         return Response({'Data':'Failed'})
+
+@api_view(['GET'])
+def getUser(request):
+    id=request.query_params.get('id')
+    user=User.objects.get(id=id)
+    return Response(UserSerializer(user).data)
 
 @api_view(['GET'])
 def getUserBooking(request):
