@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework.exceptions import AuthenticationFailed
 from datetime import timedelta,datetime
+from .email import sendMail
 import jwt
 from .views import authadmin,Decode
 '''admin views '''
@@ -64,6 +65,7 @@ def acceptRequest(request:Request):
             bk.pending=False
             bk.booked=True
             bk.save()
+            sendMail("Booking Accepted "+ str(bkid),bk.user.email)
             return Response(BookingSerializer(bk).data)
         else:
             bk.delete()
