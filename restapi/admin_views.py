@@ -65,9 +65,11 @@ def acceptRequest(request:Request):
             bk.pending=False
             bk.booked=True
             bk.save()
-            sendMail("Booking Accepted "+ str(bkid),bk.user.email)
+            sendMail("Booking Accepted "+ str(bkid),bk.user.email,subject="Booking status ")
             return Response(BookingSerializer(bk).data)
         else:
+
+            sendMail("Booking Rejected "+ str(bkid),bk.user.email,subject="Booking status ")
             bk.delete()
             return Response({"Deleted":"scessfully"})
 

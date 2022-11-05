@@ -3,13 +3,13 @@ import smtplib
 from email.mime.text import MIMEText
 i=0
 body=""    #body of the mail
-def sendMail(body,toaddr):
+def sendMail(body,toaddr,subject="Complaint"):
     msg=MIMEText(body)
     fromaddr= "swivral312002@gmail.com" #the adress from which mail is sent # give acess to less secure apps
     # toaddr=""  # mail sent to
     msg["From"]=fromaddr     #### store the adresses into msg object
     msg["To"]=toaddr
-    msg["Subject"]="Complaint"
+    msg["Subject"]=subject
     server=smtplib.SMTP("smtp.gmail.com",587)   ###connect to gmail.com server using 587 port number
     server.starttls()                   #put the smtp connection in TLS mode
     server.login(fromaddr,"nmdhzzakcthaztan")  #login to your the server with the correct password
