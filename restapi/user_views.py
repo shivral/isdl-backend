@@ -60,5 +60,6 @@ def feedback(request):
     try:
         sendMail(bod,toaddr="shivral312002@gmail.com")
         return Response({"email":"success"})
-    except:
+    except Exception as e:
+        print(e)
         return Response({"email":"Failure"})
