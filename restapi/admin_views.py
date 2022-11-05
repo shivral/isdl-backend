@@ -61,7 +61,7 @@ def acceptRequest(request:Request):
         bl=request.query_params.get('ac',None)
         
         bk=Booking.objects.get(id=bkid)
-        print("bl is ",bl)
+        print("bl is ",bl,type(bl))
         if bl:
             bk.pending=False
             bk.booked=True
