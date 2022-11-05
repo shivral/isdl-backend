@@ -5,6 +5,7 @@ from .models import Hall, LectureHall
 from .models import Booking,User
 from .serializers import BookingSerializer,HallSerializer,UserSerializer
 from datetime import datetime
+from .email import sendMail
 #commit
 @api_view(['POST','GET'])
 def createBooking(request):
@@ -51,3 +52,13 @@ def getUserBooking(request):
         return Response(BookingSerializer(qq,many=True).data)
     else:
         return Response({"bad":"no auth"})
+
+
+@api_view(["POST"])
+def feedback(request):
+    bod=request.data['issue']
+    try:
+        sendMail(bod,toaddr="shivral312002@gmail.com")
+        return Response({"email":"success"})
+    except:
+        return Response({"email":"Failure"})
