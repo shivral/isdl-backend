@@ -1,6 +1,6 @@
 from django.urls import path,re_path
 from .views import api_home, logout,register,login, userView,getAllHalls
-from .user_views import createBooking,getUserBooking,getUser
+from .user_views import createBooking,getUserBooking,getUser,feedback
 from .hall_views import createHall,getAllBookings
 from .admin_views import acceptRequest, registerAdmin,loginAdmin,getAllPending
 urlpatterns = [
@@ -19,5 +19,6 @@ urlpatterns = [
     path('acceptRequest',acceptRequest),
     path('getAllBookings',getAllBookings),
     path('getUser',getUser),
+    path('sendFeedback',feedback)
 
 ]
