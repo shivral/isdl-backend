@@ -58,11 +58,11 @@ def acceptRequest(request:Request):
     admin=authadmin(request)
     if admin:
         bkid=request.query_params.get('id',None)
-        bl=request.query_params.get('ac',None)
+        bl=int(request.query_params.get('ac',0))
         
         bk=Booking.objects.get(id=bkid)
         print("bl is ",bl,type(bl))
-        if bl:
+        if int(bl):
             bk.pending=False
             bk.booked=True
             bk.save()
