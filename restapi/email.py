@@ -16,5 +16,4 @@ def sendMail(body,toaddr,subject="Complaint"):
     server.send_message(msg) #send the message to the server
     print("mail sent")
     server.quit() #close the connection
-    time.sleep(5)
     print("sleep")

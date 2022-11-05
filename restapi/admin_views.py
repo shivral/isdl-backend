@@ -61,6 +61,7 @@ def acceptRequest(request:Request):
         bl=request.query_params.get('ac',None)
         
         bk=Booking.objects.get(id=bkid)
+        print("bl is ",bl)
         if bl:
             bk.pending=False
             bk.booked=True
@@ -68,7 +69,6 @@ def acceptRequest(request:Request):
             sendMail("Booking Accepted "+ str(bkid),bk.user.email,subject="Booking status ")
             return Response(BookingSerializer(bk).data)
         else:
-
             sendMail("Booking Rejected "+ str(bkid),bk.user.email,subject="Booking status ")
             bk.delete()
             return Response({"Deleted":"scessfully"})

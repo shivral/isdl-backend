@@ -58,7 +58,7 @@ def getUserBooking(request):
 def feedback(request):
     bod=request.data['issue']
     try:
-        sendMail(bod,toaddr="shivral312002@gmail.com",subject="Complaint")
+        sendMail(bod,toaddr="shivral312002@gmail.com",subject="Complaint") #this is admin email for now
         return Response({"email":"success"})
     except Exception as e:
         print(e)
