@@ -68,8 +68,8 @@ def acceptRequest(request:Request):
             bk.save()
             dts=bk.slotStart
             dte=bk.slotEnd
-            hallid=bk.hall
-            body="Booking with ID "+str(bkid)+" was accepted 😊 \n"+"Booking details :\n"+"start-end :"+str(dts)+" "+str(dte)+"\n"+"hallID :"+str(hallid)
+            hallid=bk.hall.hall_name
+            body="Booking with ID "+str(bkid)+" was accepted 😊 \n"+"Booking details :\n"+"start-end :"+str(dts)[:16]+" "+str(dte)[:16]+"\n"+"hallID :"+str(hallid)
             sendMail(body,bk.user.email,subject="LHMS Booking status ")
             return Response(BookingSerializer(bk).data)
         else:
