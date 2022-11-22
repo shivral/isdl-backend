@@ -66,7 +66,8 @@ def acceptRequest(request:Request):
             bk.pending=False
             bk.booked=True
             bk.save()
-            sendMail("Booking Accepted with ID ="+ str(bkid)+"Was accepted ",bk.user.email,subject="Booking status ")
+            body="Booking with ID"+str(bkid)+"was accepted 😊"
+            sendMail(body,bk.user.email,subject="LHMS Booking status ")
             return Response(BookingSerializer(bk).data)
         else:
             sendMail("Booking Rejected "+ str(bkid),bk.user.email,subject="Booking status ")
