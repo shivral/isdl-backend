@@ -76,7 +76,7 @@ def acceptRequest(request:Request):
             dts=bk.slotStart
             dte=bk.slotEnd
             hallid=bk.hall.hall_name
-            body="Booking with ID "+str(bkid)+" was rejected 😢 \n"+"Booking details :\n"+"start-end :"+str(dts)[:16]+"\n"+str(dte)[:16]+"\n"+"hallID :"+str(hallid)
+            body="Booking with ID "+str(bkid)+" was rejected 😢 \n"+"Booking details :\n"+"start-end :\n"+str(dts)[:16]+"\n"+str(dte)[:16]+"\n"+"hallID :"+str(hallid)
             sendMail(body,bk.user.email,subject="LHMS Booking status ")
             bk.delete()
             return Response({"Deleted":"scessfully"})
