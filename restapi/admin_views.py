@@ -70,7 +70,7 @@ def acceptRequest(request:Request):
             sendMail(body,bk.user.email,subject="LHMS Booking status ")
             return Response(BookingSerializer(bk).data)
         else:
-            sendMail("Booking Rejected "+ str(bkid),bk.user.email,subject="Booking status ")
+            sendMail("Booking Rejected ID="+ str(bkid),bk.user.email,subject="LHMS Booking status ")
             bk.delete()
             return Response({"Deleted":"scessfully"})
 
