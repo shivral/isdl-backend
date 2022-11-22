@@ -2,7 +2,7 @@ import time
 import smtplib
 from email.mime.text import MIMEText
 i=0
-body=""    #body of the mail
+body=""    #body of the mais
 def sendMail(body,toaddr,subject="Complaint"):
     msg=MIMEText(body)
     fromaddr= "swivral312002@gmail.com" #the adress from which mail is sent # give acess to less secure apps
