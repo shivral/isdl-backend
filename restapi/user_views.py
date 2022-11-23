@@ -57,8 +57,11 @@ def getUserBooking(request):
 @api_view(["POST"])
 def feedback(request):
     bod=request.data['issue']
+    hall=request.data['hall']
+    star=request.data['star']
     try:
-        sendMail(bod,toaddr="shivral312002@gmail.com",subject="Complaint") #this is admin email for now
+        body="Hall: "+str(hall)+"\nrating: "+str(star)+"\nissue: "+str(bod)
+        sendMail(body,toaddr="shivral312002@gmail.com",subject="LHMS FEEDBACK") #this is admin email for now
         return Response({"email":"success"})
     except Exception as e:
         print(e)
